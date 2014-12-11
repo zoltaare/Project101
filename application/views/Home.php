@@ -30,8 +30,7 @@
         		</div>
     		</div>
 		</div></center>
-
-		<small>TEST GIT</small>
+s
 	</div>
 </div>
 
