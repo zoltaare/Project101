@@ -21,7 +21,7 @@
 			                    <input class="form-control" placeholder="Username" name="username" type="text">
 			                    <input class="form-control" placeholder="Password" name="password" type="password">
 			                    <br></br>
-			                    <button class="btn btn-lg btn-success btn-block" type="submit" name="login_btn" id="login">Login »</button>
+			                    <button class="btn btn-lg btn-success btn-block" type="submit" name="login_btn" id="login">Login &raquo;</button>
 			                    <div class="errors"><span style="color:red"><?php echo validation_errors(); ?></span></div>
 			                    <div class="errors"><span style="color:red"><?php if(isset($invalid)) echo $invalid; ?></span></div>
 			                </fieldset>
@@ -30,7 +30,6 @@
         		</div>
     		</div>
 		</div></center>
-s
 	</div>
 </div>
 

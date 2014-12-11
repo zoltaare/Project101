@@ -19,11 +19,17 @@ class con_login extends CI_Controller {
         if($this->form_validation->run()!=false){
             $res = $this->login->verify_user($_POST['username'],$_POST['password']);
             if($res!=false){
-                // $this->user_log();
-                // $position = $res->Position;
                 
                 if($res->Position === "OJT"){
-                    $this->load->view('Profile/ojt.php');
+                    // check if timed in
+                    if($this->login->is_timed_in($res->User_ID, date('Y-m-d'))){
+                        // $data['user'] = $res;
+                        // $this->load->view('Profile/sched.php', $data); 
+                        $schedules($res->User_ID);
+                    }else{
+                        $data['user'] = $res;
+                        $this->load->view('Profile/time_in.php', $data); 
+                    }
                 }else{
                     $this->load->view('Profile/User_Profile.php');
                 }
@@ -41,4 +47,10 @@ class con_login extends CI_Controller {
         }
     }
 
+    public function schedules($id)
+    {
+        $data['sched'] = $this->login->get_sched($id);  
+        $data['info'] = $this->login->get_name($id);
+        $this->load->view('Profile/sched.php', $data); 
+    }
 }

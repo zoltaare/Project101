@@ -20,4 +20,25 @@ class model_login extends CI_Model{
         return $id;
     }
     
+    public function is_timed_in($id , $date)
+    {
+        $query = $this->db->get_where('tblSchedule', array("User_ID" => $id, "Date_sched" => $date));
+        if($query->row()->Status === 'timed_in' || $query->row()->Status === 'timed_out')
+            return true;
+        elseif ($query->row()->Status === 'pre') {
+            return false;
+        }
+    }
+
+    public function get_sched($id='')
+    {
+        $query = $this->db->get_where('tblSchedule' , array('User_ID' => $id));
+        return $query->result_array();
+    }
+
+    public function get_name($id='')
+    {
+        $query = $this->db->get_where('tblUsers' , array('User_ID' => $id));
+        return $query->result_array();
+    }
 }
