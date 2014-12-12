@@ -23,12 +23,12 @@ class con_login extends CI_Controller {
                 if($res->Position === "OJT"){
                     // check if timed in
                     if($this->login->is_timed_in($res->User_ID, date('Y-m-d'))){
-                        // $data['user'] = $res;
-                        // $this->load->view('Profile/sched.php', $data); 
-                        $schedules($res->User_ID);
+                        // $schedules($res->User_ID);
+                        redirect('/con_ojt', 'refresh');
                     }else{
                         $data['user'] = $res;
-                        $this->load->view('Profile/time_in.php', $data); 
+                        $data['sched_now'] = $this->login->get_sched_today($res->User_ID, date('Y-m-d'));
+                        $this->load->view('Profile/time_in.php', $data);
                     }
                 }else{
                     $this->load->view('Profile/User_Profile.php');
@@ -47,10 +47,21 @@ class con_login extends CI_Controller {
         }
     }
 
-    public function schedules($id)
-    {
-        $data['sched'] = $this->login->get_sched($id);  
-        $data['info'] = $this->login->get_name($id);
-        $this->load->view('Profile/sched.php', $data); 
-    }
-}
+   public function timestamp()
+   {
+        // echo $this->input->post('time_in');
+        $dataset = array(
+            'Time_ID' => NULL,
+            'Date' => $this->input->post('date'),
+            'Time_in' => $this->input->post('time_in'),
+            'Time_out' => '',
+            'Officer_In_Charge' => '',
+            'Validate_Status' => '',
+            'User_ID' => $this->input->post('user_id')
+        );
+        $this->login->add_timestamp($dataset);
+        echo "success add timestamp.";
+   }
+
+
+} //@end main

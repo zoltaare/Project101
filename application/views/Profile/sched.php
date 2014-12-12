@@ -21,6 +21,10 @@
 							<img class="media-object" src="http://critterapp.pagodabox.com/img/user.jpg">
 						</a>
 						<div class="media-body">
+						
+							<div class="time-out">
+								<span><strong>Time Out</strong></span>
+							</div>
 							<p class="media-heading"><strong>
 								<?php  
 									foreach ($info as $key => $value) {
@@ -29,7 +33,9 @@
 								?>
 							</strong></p>
 							<h4>
-								<span class="label label-info"><?php echo $value['Department']; }?></span>
+								<span class="label label-info"><?php echo $value['Department']." Department"; }?></span>
+								<span class="label label-info">DTR Summary</span>
+								<span class="label label-danger ojt-logout"><a href="<?php echo base_url().'con_ojt/logout'; ?>">Logout</a></span>
 							</h4>
 							<!-- <p>
 								<a href="#" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-comment"></span> Message</a>
@@ -52,16 +58,25 @@
 						</thead>
 						<tbody>
 							<?php 
+								$now = date('Y-m-d');
 								foreach ($sched as $key => $value) {
-									echo "
-									<tr>
-										<td>".$value['Date_sched']."</td>
-										<td>".$value['Time_in']."</td>
-										<td>".$value['Time_out']."</td>
-										<td>".$value['Shift_desc']."</td>
-										<td>".$value['Status']."</td>
-									</tr>
-									";
+									if($now === $value['Date_sched']){
+										echo "<tr style='background-color: #5BC0DE;		'>
+											<td>".$value['Date_sched']."</td>
+											<td>".$value['Time_in']."</td>
+											<td>".$value['Time_out']."</td>
+											<td>".$value['Shift_desc']."</td>
+											<td>".$value['Status']."</td>
+										</tr>";	
+									}else{	
+										echo "<tr>
+											<td>".$value['Date_sched']."</td>
+											<td>".$value['Time_in']."</td>
+											<td>".$value['Time_out']."</td>
+											<td>".$value['Shift_desc']."</td>
+											<td>".$value['Status']."</td>
+										</tr>";
+									}
 								}
 							 ?>
 						</tbody>

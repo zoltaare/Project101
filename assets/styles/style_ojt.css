@@ -71,3 +71,38 @@ body {padding-top:50px;}
 .ojt-info{
 	margin-bottom: 20px;
 }
+.ojt-logout > a{
+	text-decoration: none;
+	color: #fff;
+}
+.ojt-logout:hover{
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+/*TIME OUT BUTTON*/
+.time-out {
+	box-shadow: 2px 4px 0 2px rgba(0,0,0,0.1);
+	/*border: .5em solid #E84D0E;*/
+    background-color: #D9534F;
+    border-radius: 50%;
+    display: table;
+    height: 80px;
+    margin: 0 auto;
+    width: 80px;
+    position: absolute;
+    /*float: right;*/
+    right: 6%;
+}
+
+.time-out:hover{
+	cursor: pointer;
+	opacity: 0.9;
+}
+
+.time-out span {
+    color: #fff;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}

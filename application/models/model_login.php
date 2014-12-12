@@ -36,9 +36,21 @@ class model_login extends CI_Model{
         return $query->result_array();
     }
 
-    public function get_name($id='')
+    public function get_sched_today($id , $date)
+    {
+        $this->db->select('Time_in, Time_out');
+        $q = $this->db->get_where('tblSchedule', array('User_ID' => $id, 'Date_sched' => $date));
+        return $q->row();
+    }
+
+    public function get_info($id='')
     {
         $query = $this->db->get_where('tblUsers' , array('User_ID' => $id));
         return $query->result_array();
+    }
+
+    public function add_timestamp($dataset='')
+    {
+        $this->db->insert('tblTimeStamp', $dataset);
     }
 }
