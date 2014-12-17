@@ -30,7 +30,7 @@
 								<li class="list-group-item"><?php echo date('l jS \of F Y'); ?></li>
 								<li class="list-group-item">
 									<?php 
-										$time_in = date("h:iA");
+										$time_in = date("h:iA"); //NARA!
 										echo "Time-In : $time_in";
 									?>
 								</li>

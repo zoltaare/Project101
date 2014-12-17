@@ -23,8 +23,11 @@ class con_login extends CI_Controller {
                 if($res->Position === "OJT"){
                     // check if timed in
                     if($this->login->is_timed_in($res->User_ID, date('Y-m-d'))){
-                        // $schedules($res->User_ID);
-                        redirect('/con_ojt', 'refresh');
+                        // schedules($res->User_ID);
+                        $data['sched'] = $this->login->get_sched($res->User_ID);  
+                        $data['info'] = $this->login->get_info($res->User_ID);
+                        $this->load->view('Profile/sched.php', $data);
+                        // redirect('/con_ojt', 'refresh');
                     }else{
                         $data['user'] = $res;
                         $data['sched_now'] = $this->login->get_sched_today($res->User_ID, date('Y-m-d'));
@@ -62,6 +65,14 @@ class con_login extends CI_Controller {
         $this->login->add_timestamp($dataset);
         echo "success add timestamp.";
    }
+
+   
+
+    // public function logout()
+    // {
+    //     $this->session->sess_destroy();
+    //     redirect(base_url(), 'refresh');
+    // }
 
 
 } //@end main

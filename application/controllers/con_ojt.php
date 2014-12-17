@@ -23,4 +23,10 @@ class con_ojt extends CI_Controller {
 		redirect(base_url(), 'refresh');
 	}
 
+	public function timeout()
+	{
+		// echo "Test Timeout!";
+	}
+
+
 }

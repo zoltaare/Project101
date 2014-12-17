@@ -38,6 +38,9 @@ class model_login extends CI_Model{
 
     public function get_sched_today($id , $date)
     {
+        //change the sched status here? 
+         // $this->db->where();
+        $this->db->update('tblSchedule', array('Status' => 'timed_in') , array('User_ID' => $id , 'Date_sched' => $date));
         $this->db->select('Time_in, Time_out');
         $q = $this->db->get_where('tblSchedule', array('User_ID' => $id, 'Date_sched' => $date));
         return $q->row();

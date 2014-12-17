@@ -27,9 +27,11 @@ $(function(){
 		});
 	});
 
-	// time out
-	$('.time-out').click(function(){
-		// alert('asd');
+	//TIME OUT
+	$('body').on('click', '.time-out', function(){
+		$.post("http://localhost/Project101/con_ojt/timeout", '', function(data){
+			// alert(data);
+		});
 	});
 
 });

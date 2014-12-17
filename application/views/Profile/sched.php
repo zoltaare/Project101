@@ -17,7 +17,7 @@
 				<div class="widget-content">
 					<!-- INFO -->
 					<div class="media ojt-info">
-						<a class="thumbnail pull-left" href="#">
+						<a class="thumbnail pull-left" href="#" id="<?php foreach ($info as $key => $value) { echo $value['User_ID']; 	?>">
 							<img class="media-object" src="http://critterapp.pagodabox.com/img/user.jpg">
 						</a>
 						<div class="media-body">
@@ -27,9 +27,8 @@
 							</div>
 							<p class="media-heading"><strong>
 								<?php  
-									foreach ($info as $key => $value) {
+									// foreach ($info as $key => $value) {
 										echo $value['First_Name'] ." ". $value['Middle_Name'] ." ". $value['Last_Name'];
-									
 								?>
 							</strong></p>
 							<h4>
@@ -60,23 +59,13 @@
 							<?php 
 								$now = date('Y-m-d');
 								foreach ($sched as $key => $value) {
-									if($now === $value['Date_sched']){
-										echo "<tr style='background-color: #5BC0DE;		'>
+										echo "<tr style='background-color: #5BC0DE;	N'>
 											<td>".$value['Date_sched']."</td>
 											<td>".$value['Time_in']."</td>
 											<td>".$value['Time_out']."</td>
 											<td>".$value['Shift_desc']."</td>
 											<td>".$value['Status']."</td>
 										</tr>";	
-									}else{	
-										echo "<tr>
-											<td>".$value['Date_sched']."</td>
-											<td>".$value['Time_in']."</td>
-											<td>".$value['Time_out']."</td>
-											<td>".$value['Shift_desc']."</td>
-											<td>".$value['Status']."</td>
-										</tr>";
-									}
 								}
 							 ?>
 						</tbody>
